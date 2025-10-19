@@ -7,11 +7,8 @@ WEBHOOK_URL = "https://discord.com/api/webhooks/1409649940321276060/lgqC2HqRj_On
 
 @app.route("/")
 def home():
-    user = os.getlogin()
-    host = os.gethostname()
-    ip = os.gethostbyname()
     payload = {
-        "content": f"User: {user} / IP: {ip}"
+        "content": f"Visit"
     }
     try:
         requests.post(WEBHOOK_URL, json=payload)
@@ -22,4 +19,5 @@ def home():
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=10000)
+
 
